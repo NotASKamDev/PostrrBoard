@@ -1,0 +1,40 @@
+name: "postrrboard-dev-full-docker"
+version: "latest"
+services:
+  server:
+    build:
+      context: ..
+      dockerfile: "./Docker/dev.server.Dockerfile"
+    stdin_open: true
+    depends_on:
+      - mongo
+    ports:
+      - "3000:3000"
+    # networks:
+    #   - "igst"
+    volumes:
+      - ../apps/server/:/usr/src/app
+      - server_modules:/usr/src/app/node_modules
+      - .yarn:/usr/src/app/.yarn
+      - /dev/null:/usr/src/app/yarn.lock
+      # - /usr/src/app/yarn.lock
+      # - ../.yarnrc.yml:/usr/src/app/.yarnrc.yml
+      # - ../../../.yarn:/usr/src/app/.yarn
+      
+    tty: true
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_USER}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASS}
+    volumes:
+      - ./db_data:/data/db
+volumes:
+  db_data:
+    driver: local
+  server_modules:
+    driver: local
+
+#docker compose -f ./Docker/docker-compose.yml up
