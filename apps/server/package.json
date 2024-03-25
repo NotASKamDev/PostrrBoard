@@ -20,6 +20,7 @@
      },
      "dependencies": {
           "bcrypt": "^5.1.1",
+          "dotenv": "^16.4.5",
           "express": "^4.19.1",
           "mongoose": "^8.2.3",
           "passport": "^0.7.0",
@@ -31,14 +32,16 @@
      "type": "module",
      "main": "dist/index.js",
      "scripts": {
-          "start": "node dist/index.js",
-          "dev": "npx nodemon -y -e ts --watch src --exec 'yarn lint && yarn dev:build && yarn start'",
+          "d": "yarn dev",
+          "dev": "npx nodemon -y -e ts --watch src --exec 'yarn lint && yarn dev:build && yarn dev:start' || exit 1",
+          "dev:start": "node dist/index.js",
           "dev:build": "tsup --config tsup.config.ts",
           "lint": "tsc",
           "dd": "yarn docker:dev",
           "docker:dev": "cd ../../Docker && echo $PWD && docker-compose -f ./dev.docker-compose.yml build --no-cache=true && docker compose -f ./dev.docker-compose.yml up --force-recreate -d --build ",
           "ddb": "yarn docker:db-only",
           "docker:db-only": "cd ../../Docker && docker compose -f ./dev-db.docker-compose.yml up --force-recreate -d --build",
-          "dev:mem": ""
+          "dev:mem": "USE_MEMSERV=true yarn d",
+          "md": "yarn dev:mem"
      }
 }

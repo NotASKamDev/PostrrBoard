@@ -12,6 +12,6 @@ export default defineConfig({
     // watch: ["src", "tsup.config.ts"],
     onSuccess: "node dist/index.js",
     format: "esm",
-
+    external: ["mongodb-memory-server"]
 
 })
