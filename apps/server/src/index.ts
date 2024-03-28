@@ -18,8 +18,8 @@ app.use(httpLogger);
 app.get("/", (_req, res) => {
     console.log(_req.ips)
     res.status(200).send({
-        hello: "world"
+        hello: "world!"
     })
 })
 
-app.listen(3000, () => logger.info("✅ Server up!!! 🚀")).addListener("close",()=>logger.info("Shutting down server..."))
+app.listen(3000, () => logger.info("✅ Server up!!! 🚀")).addListener("close", () => logger.info("Shutting down server..."))

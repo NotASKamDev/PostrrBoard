@@ -36,9 +36,9 @@ export default async function connectToDB () {
                 port: env.MONGO_PORT,
             },
         })
-        logger.info(`\`memserv\` state is : ${memserv.state}`)
+        logger.info(`"mongodb-memory-server" state is : ${memserv.state}`)
         connString = memserv.getUri()
-        logger.debug("Database URI is", connString)
+        logger.debug(`Database URI is ${connString}`)
     }
     try
     {

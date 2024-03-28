@@ -8,7 +8,7 @@
     "lib": [
       "es2022"
     ],
-    "incremental": true,
+    // "incremental": true,
     "module": "ESNext",
     "target": "es2022",
     "strict": true,

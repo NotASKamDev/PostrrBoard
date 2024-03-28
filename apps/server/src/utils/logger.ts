@@ -3,15 +3,16 @@ import { pinoHttp } from "pino-http"
 const { pino: pino } = await import("pino")
 const logger = pino({
     transport: {
-        target: "pino-pretty"
+        target: "pino-pretty",
     },
-    level:"debug",
+    level: "debug",
+
 })
 export const httpLogger = pinoHttp({
 
     transport: {
         target: "pino-pretty"
-    },
+    }
 
 })
 export default logger
