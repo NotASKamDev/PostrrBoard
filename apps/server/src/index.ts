@@ -1,7 +1,6 @@
 import env from "./utils/env";
 import express from "express";
 import logger, { httpLogger } from "./utils/logger"
-// console.log(process.env.MONGO_USER)
 import connectToDB from "./utils/connectToMongo";
 import { Mongoose } from "mongoose";
 
