@@ -48,6 +48,7 @@ export default async function connectToDB () {
             pass,
             dbName,
         }))
+        
     } catch (e)
     {
         connData = e instanceof Error ? e.message : `${e}`
@@ -59,6 +60,5 @@ export default async function connectToDB () {
         logger.error(`😵 Mongoose failed to connect. Error: ${connData}`)
     return connData
 }
-
 
 

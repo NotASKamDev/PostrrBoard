@@ -51,8 +51,7 @@ const UserSchema = new Schema<User, {}, UserMethods, {}, {}, UserStatics>({
         async login (password) {
 
             return await checkHash(password, this.password)
-        },
-
+        }
     },
     statics: {
         async loginUser (username: string, password: string) {
@@ -75,8 +74,8 @@ UserSchema.pre("save", async function (next) {
 })
 
 
-const User: UserModel = model('users', UserSchema)
-export default User
+const Users: UserModel = model('users', UserSchema)
+export default Users
 
 async function getNewHash (password: string) {
     const hash = await argon.hash(password, {

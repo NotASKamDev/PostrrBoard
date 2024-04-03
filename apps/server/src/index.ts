@@ -21,4 +21,4 @@ app.get("/", (_req, res) => {
     })
 })
 
-app.listen(3000, () => logger.info("✅ Server up!!! 🚀")).addListener("close", () => logger.info("Shutting down server..."))
+app.listen(3000, () => logger.info("✅ Server up!!! 🚀")).addListener("close", () => logger.info("Shutting down server...")) 
