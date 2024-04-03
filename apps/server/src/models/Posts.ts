@@ -27,7 +27,6 @@ export const PostValidatorBase = z.object({
         invalid_type_error: "Invalid visibility level."
     }),
     content: z.string().min(128, "Too little content").max(32768, "Too much content"),
-    repliesTo: z.array(z.string())
 })
 
 const PostSchema = new Schema<Post, {}, PostMethods, {}, {}, PostStatics>({
