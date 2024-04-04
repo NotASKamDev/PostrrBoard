@@ -17,7 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "Bundler",
     "noUncheckedIndexedAccess": true,
-    "noEmit": true
+    "noEmit": true,
+    "strictNullChecks": true
     // "outFile": "./dist/index.js"
   },
   "include": ["src"]

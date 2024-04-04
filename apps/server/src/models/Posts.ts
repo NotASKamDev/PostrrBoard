@@ -12,7 +12,7 @@ type PostVisibility = typeof PostVisibility[keyof typeof PostVisibility];
 interface Post extends Document, ZInfer<typeof PostValidatorBase> {
     author: {
         _id: Types.ObjectId,
-        name: string
+        username: string
     }
 
 }
@@ -29,7 +29,9 @@ export const PostValidatorBase = z.object({
     content: z.string().min(128, "Too little content").max(32768, "Too much content"),
 })
 
-const PostSchema = new Schema<Post, {}, PostMethods, {}, {}, PostStatics>({
+// const PostSchema = new Schema<Post, {}, PostMethods, {}, {}, PostStatics>({
+// const PostSchema = new Schema<Post, PostModel, PostMethods>({
+const PostSchema = new Schema<Post>({
     title: {
         type: "string",
         required: true,
@@ -70,7 +72,7 @@ const PostSchema = new Schema<Post, {}, PostMethods, {}, {}, PostStatics>({
             type: "ObjectID",
             required: true,
         },
-        name: {
+        username: {
             type: "string",
             required: true
         }
@@ -85,6 +87,6 @@ PostSchema.set("autoIndex", true)
 
 
 
-const Posts: PostModel = model('posts', PostSchema)
+const Posts = model('posts', PostSchema)
 export default Posts
 
